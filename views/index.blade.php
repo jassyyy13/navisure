@@ -272,11 +272,6 @@ axios.get('admin/get-api-key')
 // Set the Mapbox access token using the retrieved API key
 mapboxgl.accessToken = apiKey;
 
-// const bounds = [
-// [121.14058359493015, 16.47057118151561], // Southwest coordinates
-// [121.14296879922574, 16.485193274291888] // Northeast coordinates
-// ];
-
 const map = new mapboxgl.Map({
 container: 'map', // container ID
 // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
@@ -308,44 +303,6 @@ showUserHeading: true
 );
 
 map.on('load', () => {
-    // The whole surface area of NVSU. Uncomment this after all map features are displayed
-    // map.addSource('area', {
-    // 'type': 'geojson',
-    // 'data': {
-    // 'type': 'Feature',
-    // 'geometry': {
-    // 'type': 'Polygon',
-    // // These coordinates outlines the NVSU map. Add as many as you can to display the NVSU perimeter.
-    // 'coordinates': [[
-    // [121.14193065344494, 16.478656472022408],
-    // [121.14447545515225, 16.482600530473363],
-    // [121.14578701451597, 16.48132197393997],
-    // [121.14326187222059, 16.477390228986224],
-    // [121.14193065344494, 16.478656472022408],
-    // ]]
-    // }
-    // }
-    // });
-     
-    // // Add a black outline around the polygon.
-    // map.addLayer({
-    // 'id': 'area1',
-    // 'type': 'line',
-    // 'source': 'area',
-    // 'layout': {},
-    // 'paint': {
-    // 'line-color': '#000',
-    // 'line-width': 1
-    // }
-    // });
-//Display coordinates when clicked
-// map.on('click', function(e) {
-// var coordinates = e.lngLat;
-// new mapboxgl.Popup()
-//   .setLngLat(coordinates)
-//   .setHTML('Coordinates: ' + coordinates)
-//   .addTo(map);
-// });
 
 @foreach($paths as $path)
   map.addSource('{{$path->pth_code}}', {
@@ -610,6 +567,7 @@ if(rooms == ''){
 
 var img_count = 0;
 
+  //adds carousel-item to carousel if there is an image
 if(img.endsWith("png")){
   img_count += 1;
   $('#bldg_image').css('visibility', 'visible');
