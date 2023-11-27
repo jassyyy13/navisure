@@ -309,11 +309,6 @@ axios.get('get-api-key')
 // Set the Mapbox access token using the retrieved API key
 mapboxgl.accessToken = apiKey;
 
-// const bounds = [
-// [121.14267562403916, 16.4752489301802], // Southwest coordinates
-// [121.1442305818419, 16.483227799875138] // Northeast coordinates
-// ];
-
 const map = new mapboxgl.Map({
 container: 'map', // container ID
 // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
@@ -343,24 +338,7 @@ new mapboxgl.Popup()
 });
 
 map.on('load', () => {
-    // The whole surface area of NVSU. Uncomment this after all map features are displayed
-    // map.addSource('area', {
-    // 'type': 'geojson',
-    // 'data': {
-    // 'type': 'Feature',
-    // 'geometry': {
-    // 'type': 'Polygon',
-    // // These coordinates outlines the NVSU map. Add as many as you can to display the NVSU perimeter.
-    // 'coordinates': [[
-    // [121.14193065344494, 16.478656472022408],
-    // [121.14447545515225, 16.482600530473363],
-    // [121.14578701451597, 16.48132197393997],
-    // [121.14326187222059, 16.477390228986224],
-    // [121.14193065344494, 16.478656472022408],
-    // ]]
-    // }
-    // }
-    // });
+    
 @foreach($paths as $path)
   map.addSource('{{$path->pth_code}}', {
 'type': 'geojson',
